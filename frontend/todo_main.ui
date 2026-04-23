@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>BYS To-Do List</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    /* MẶT BẰNG CHUNG */
+    QMainWindow { background-color: #f0f4f8; }
+    QTabWidget::pane { border: none; background-color: transparent; }
+/* TĂNG SIZE CÁC TAB CHỨC NĂNG (ĐÃ FIX LỖI CẮT CHỮ) */
+    QTabBar::tab { 
+        background: #e1e8ed; 
+        min-width: 140px;    /* THÊM DÒNG NÀY: Ép chiều rộng tối thiểu để chứa đủ chữ */
+        min-height: 25px;    /* THÊM DÒNG NÀY: Đảm bảo chiều cao đủ thoáng */
+        padding: 10px 15px;  /* Căn chỉnh lại lề một chút cho cân đối */
+        font-weight: bold; 
+        color: #555; 
+        border-top-left-radius: 8px; 
+        border-top-right-radius: 8px; 
+        margin-right: 2px; 
+        font-size: 16px; 
+    }
+    
+    QTabBar::tab:selected { 
+        background: #0078D4; 
+        color: white; 
+    }
+    QScrollArea { border: none; background-color: transparent; }
+    QScrollBar:horizontal { border: none; background: #e0e0e0; height: 10px; border-radius: 5px; }
+    QScrollBar::handle:horizontal { background: #0078D4; min-width: 20px; border-radius: 5px; }
+    QFrame#header_frame { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #ffffff, stop:0.5 #0078D4, stop:1 #005a9e); }
+    QLabel#app_title { font-size: 36px; font-weight: 900; color: #0078D4; background: transparent; font-style: italic; }
+    QLabel#user_label { color: white; font-size: 16px; background: transparent; }
+    QPushButton#logout_btn { background-color: white; color: #0078D4; font-weight: bold; border-radius: 15px; padding: 8px 20px; font-size: 15px;outline: none; }
+
+    /* CỘT KANBAN VÀ KHUNG NHẬP LIỆU */
+    DayDropFrame { background-color: #ffffff; border-radius: 12px; border: 1px solid #e1e8ed; }
+    DayDropFrame[drag_active="true"] { background-color: #f1f8ff; border: 2px dashed #0078D4; }
+    QLabel#col_header { font-weight: 900; font-size: 20px; color: #0078D4; padding: 15px 0px; }
+    QLineEdit[class="kanban_input"] { background: #f0f4f8; border-radius: 5px; padding: 8px; border: 1px solid #ccc;font-size: 15px; }
+    QPushButton#btn_add_task { background-color: #0078D4; color: white; font-weight: bold; border-radius: 5px; padding: 8px; font-size: 15px;}
+
+    /* THẺ CÔNG VIỆC (TASK CARD) */
+    QFrame[class="task_card"][is_completed="true"] { background-color: #f4f6f8; border-radius: 8px; border: 1px solid #2ecc71; }
+    QFrame[class="task_card"][is_completed="false"] { background-color: white; border-radius: 8px; border: 1px solid #e1e8ed; }
+    
+    QLabel#time_lbl[is_completed="true"] { color: #a0aab5; font-weight: bold; font-size: 13px; }
+    QLabel#time_lbl[is_completed="false"] { color: #e67e22; font-weight: bold; font-size: 13px; }
+    
+    QLabel#task_lbl[is_completed="true"] { color: #a0aab5; font-size: 14px; text-decoration: line-through; }
+    QLabel#task_lbl[is_completed="false"] { color: #2d3436; font-size: 14px; font-weight: bold; }
+
+    /* NÚT BẤM TRONG THẺ */
+    QPushButton#btn_edit { background-color: #0078D4; color: white; border-radius: 4px; font-size: 11px; padding: 4px; }
+    QPushButton#btn_delete { background-color: #e74c3c; color: white; border-radius: 4px; font-size: 11px; padding: 4px; }
+
+    /* Ô TICK (CHECKBOX) HÌNH TRÒN XANH LAM - TICK TRẮNG */
+    QCheckBox::indicator { 
+        width: 20px; 
+        height: 20px; 
+        border-radius: 10px;        /* Bo góc 10px trên tổng kích thước 20px để tạo hình tròn */
+        border: 1.5px solid #b2bec3; /* Viền màu xám mờ */
+        background-color: white;     /* Nền bên trong màu trắng khi chưa tích */
+    }
+    
+    QCheckBox::indicator:hover { 
+        border: 1.5px solid #1A73E8; /* Viền chuyển màu xanh lam khi rê chuột vào */
+    }
+    
+    QCheckBox::indicator:checked { 
+        background-color: #1A73E8;     /* Đổ nền màu xanh lam đặc trưng khi đã tích */
+        border: 1.5px solid #1A73E8;   /* Viền tiệp màu với nền */
+        
+        /* Dấu tick màu trắng đã được mã hóa lại Base64 */
+        image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBvbHlsaW5lIHBvaW50cz0iMjAgNiA5IDE3IDQgMTIiLz48L3N2Zz4="); 
+    }
+   </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_main">
+    <property name="leftMargin"><number>0</number></property>
+    <property name="topMargin"><number>0</number></property>
+    <property name="rightMargin"><number>0</number></property>
+    <item>
+     <widget class="QFrame" name="header_frame">
+      <property name="minimumSize"><size><width>0</width><height>70</height></size></property>
+      <layout class="QHBoxLayout" name="horizontalLayout_header">
+       <item>
+        <widget class="QLabel" name="app_title">
+         <property name="text"><string>BYS To-Do List</string></property>
+        </widget>
+       </item>
+       <item><spacer><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+       <item>
+        <widget class="QLabel" name="user_label">
+         <property name="text"><string>Tài khoản: loading...</string></property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="logout_btn">
+         <property name="text"><string>Đăng xuất</string></property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="tabs">
+      <widget class="QWidget" name="todo_tab">
+       <attribute name="title"><string>To-Do List</string></attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_todo">
+        <item>
+         <widget class="QScrollArea" name="main_scroll_area">
+          <property name="widgetResizable"><bool>true</bool></property>
+          <widget class="QWidget" name="scroll_contents">
+           <layout class="QHBoxLayout" name="kanban_layout">
+            <property name="spacing"><number>20</number></property>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="weather_tab_container">
+       <attribute name="title"><string>Thời tiết</string></attribute>
+       <layout class="QVBoxLayout" name="weather_layout"/>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

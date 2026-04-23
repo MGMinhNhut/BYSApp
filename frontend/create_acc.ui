@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1223</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>BYS App - Sign Up</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    /* Đồng bộ màu nền xanh xám nhạt */
+    QDialog { 
+        background-color: #F0F4F8; 
+    }
+    
+    /* Đồng bộ ô nhập liệu: viền mảnh, bo góc 10px, màu chữ #333333 */
+    QLineEdit {
+        border: 1px solid #CFD8DC;
+        border-radius: 10px;
+        padding: 12px;
+        background-color: #FFFFFF;
+        font-size: 18pt;
+        color: #333333;
+    }
+    
+    /* Viền xanh đậm khi focus */
+    QLineEdit:focus { 
+        border: 2px solid #0078D4; 
+    }
+    
+    /* Nút SIGN UP: Xanh doanh nghiệp, bo góc 10px, font 16pt */
+    QPushButton#SignUp_button {
+        background-color: #0078D4;
+        color: white;
+        font-size: 19pt;
+        font-weight: bold;
+        border-radius: 10px;
+        min-height: 65px;
+    }
+    
+    /* Hiệu ứng di chuột chuẩn Login */
+    QPushButton#SignUp_button:hover {
+        background-color: #005A9E;
+    }
+    
+    /* Nút quay lại Login: Xanh đồng bộ, không gạch chân */
+    QPushButton#Back_button {
+        background-color: transparent;
+        color: #0078D4;
+        font-size: 11pt;
+        font-weight: bold;
+    }
+   </string>
+  </property>
+  
+  <layout class="QHBoxLayout" name="windowLayout">
+   <property name="leftMargin"><number>20</number></property>
+   <property name="rightMargin"><number>20</number></property>
+   
+   <item>
+    <spacer name="leftSpacer">
+     <property name="orientation"><enum>Qt::Horizontal</enum></property>
+     <property name="sizeHint" stdset="0">
+      <size><width>100</width><height>20</height></size>
+     </property>
+    </spacer>
+   </item>
+
+   <item>
+    <layout class="QVBoxLayout" name="mainLayout">
+     <property name="spacing"><number>25</number></property>
+     <property name="topMargin"><number>50</number></property>
+     <property name="bottomMargin"><number>50</number></property>
+
+     <item>
+      <widget class="QLabel" name="Title">
+       <property name="styleSheet">
+        <string notr="true">font-size: 45pt; font-weight: bold; color: #0078D4; margin-bottom: 30px;</string>
+       </property>
+       <property name="text"><string>Sign Up</string></property>
+       <property name="alignment"><set>Qt::AlignCenter</set></property>
+      </widget>
+     </item>
+
+     <item>
+      <widget class="QLineEdit" name="Email_input">
+       <property name="minimumSize">
+        <size><width>400</width><height>65</height></size>
+       </property>
+       <property name="maximumSize">
+        <size><width>900</width><height>65</height></size>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="placeholderText"><string>Email address</string></property>
+      </widget>
+     </item>
+
+     <item>
+      <widget class="QLineEdit" name="Password_input">
+       <property name="minimumSize">
+        <size><width>400</width><height>65</height></size>
+       </property>
+       <property name="maximumSize">
+        <size><width>900</width><height>65</height></size>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="echoMode"><enum>QLineEdit::Password</enum></property>
+       <property name="placeholderText"><string>Password</string></property>
+      </widget>
+     </item>
+
+     <item>
+      <widget class="QLineEdit" name="Confirm_Password_input">
+       <property name="minimumSize">
+        <size><width>400</width><height>65</height></size>
+       </property>
+       <property name="maximumSize">
+        <size><width>900</width><height>65</height></size>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="echoMode"><enum>QLineEdit::Password</enum></property>
+       <property name="placeholderText"><string>Confirm Password</string></property>
+      </widget>
+     </item>
+
+     <item>
+      <widget class="QPushButton" name="SignUp_button">
+       <property name="minimumSize">
+        <size><width>400</width><height>70</height></size>
+       </property>
+       <property name="maximumSize">
+        <size><width>900</width><height>70</height></size>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text"><string>SIGN UP</string></property>
+       <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+      </widget>
+     </item>
+
+     <item>
+      <layout class="QHBoxLayout" name="footerLayout">
+       <item>
+        <spacer name="footerLeftSpacer">
+         <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="styleSheet"><string notr="true">font-size: 12pt; color: #555555;</string></property>
+         <property name="text"><string>Already have an account?</string></property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Back_button">
+         <property name="text"><string>Login</string></property>
+         <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="footerRightSpacer">
+         <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+
+     <item>
+      <widget class="QLabel" name="error_label">
+       <property name="styleSheet"><string notr="true">color: #ff4d4d; font-size: 11pt;</string></property>
+       <property name="text"><string/></property>
+       <property name="alignment"><set>Qt::AlignCenter</set></property>
+      </widget>
+     </item>
+
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation"><enum>Qt::Vertical</enum></property>
+       <property name="sizeHint" stdset="0">
+        <size><width>20</width><height>40</height></size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+
+   <item>
+    <spacer name="rightSpacer">
+     <property name="orientation"><enum>Qt::Horizontal</enum></property>
+     <property name="sizeHint" stdset="0">
+      <size><width>100</width><height>20</height></size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+</ui>
